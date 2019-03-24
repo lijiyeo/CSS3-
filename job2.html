@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #history p{
+            background-color:gainsboro;
+            float: left;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="want" placeholder="请输入想查找的商品" style="height:30px;">
+    <input type="button" value="搜索" onclick="saveStorage('want');" style="width:100px;height:30px;">
+    <br>
+    <p>最近搜索</p>
+    <div id="history" style="float:left;"></div>
+    <input type="button" value="X" onclick="clearStorage('history');" style="float:left;border:none;background-color:gainsboro;">
+</body>
+<script>
+    function saveStorage(id) {
+        var data = document.getElementById(id).value;
+        var no=new Array();
+        var time = new Date().getTime();
+        localStorage.setItem(time, data);
+        showStorage('history');
+    }
+    function showStorage(id){
+        var result="";
+        for(var i=0;i<localStorage.length;i++){
+            var key = localStorage.key(i);
+            var value = localStorage.getItem(key);
+            result+='<p>'+value+'</p>';
+        }
+        var target = document.getElementById(id);
+        target.innerHTML = result;
+    }
+    function clearStorage() {
+        localStorage.clear();
+        alert("全部数据被清除。");
+        showStorage('history');
+    }
+    window.onload=function(){
+        showStorage('history');
+    }
+</script>
+</html>
