@@ -24,6 +24,7 @@
     left:100px;
     top:100px;">
     </canvas>
+    <p>已刮开<span id="drawPercent">0</span>%阴影</p>
 </body>
 <script>
     var canvas1= document.getElementById("canvas1");
@@ -63,31 +64,29 @@
             context2.fill();
             context2.closePath();
 
-            if(result>0.85){
-                context2.clearRect(0,0,uWidth,uHeight);
-                canvas2.removeEventListener("mousemove", move);
-            }
-        },false);
-        canvas2.addEventListener("mouseup",function () {
+            drawPercent.innerHTML = getPercent(context2, 200, 100);
+            
+            function getPercent(context2, width, height) {
+                var imgData=context2.getImageData(0,0,width,height);
+                var pixelsArr=imgData.data;
+                var transPixelsArr=0;
+                for (var i = 0, j = pixelsArr.length; i < j; i += 4) {
+                    var a = pixelsArr[i + 3];
+                    if (a ==0) {
+                        transPixelsArr++;
+                    }
+                }
+                 return (transPixelsArr/(pixelsArr.length/4)*100).toFixed(2);
+                 };
+                 if(getPercent(context2,200,100)>85){
+                    context2.clearRect(0,0,200,100);
+                    canvas2.removeEventListener("mousemove", move);
+                }
+            },false);
+            canvas2.addEventListener("mouseup",function () {
             canvas2.removeEventListener("mousemove",move);
             canvas2.removeEventListener("mouseup",up);
         },false);
     },false);
-
-    var result=function(){
-        var uWidth=context2.width;
-        var uHeight=context2.height;
-        var imgData=context2.getImageData(0,0,uWidth,uHeight);
-        var pixelsArr=imgData.data;
-        var transPixelsArr=0;
-        for (var i = 0, j = pixelsArr.length; i < j; i += 4) {
-        var a = pixelsArr[i + 3];
-        if (a ==0) {
-            transPixelsArr++;
-        }
-    }
-    return transPixelsArr/(pixelsArr.length/4);
-    };
-    
 </script>
 </html>
