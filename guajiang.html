@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+</head>
+<body>
+    <canvas id="canvas1" width="200" height="100" style="position:absolute;
+    left:100;
+    top: 100;
+    border: 1px solid red;
+    position: absolute;
+    left:100px;
+    top:100px;">
+    </canvas>
+    <canvas id="canvas2" width="200" height="100" style="position:absolute;
+    left:100;
+    top: 100;
+    border: 1px solid red;
+    position: absolute;
+    left:100px;
+    top:100px;">
+    </canvas>
+</body>
+<script>
+    var canvas1= document.getElementById("canvas1");
+    var context1 = canvas1.getContext("2d");
+    context1.font = "35px 隶书";
+    var chance=Math.random();
+    var award;
+    if(chance<0.1){
+        award="一等奖";
+    }
+    else if(chance>0.1 && chance<0.3){
+        award="二等奖";
+    }
+    else if(chance>0.3 && chance<0.6){
+        award="三等奖";
+    }
+    else{
+        award="谢谢惠顾";
+    }
+    context1.fillText(award,35,60, 200);
+
+    var canvas2= document.getElementById("canvas2");
+    var context2 = canvas2.getContext("2d");
+    context2.fillStyle="red";
+    context2.fillRect(0,0,200,100);
+    
+    
+
+    context2.globalCompositeOperation = "destination-out";
+    var down;var move;var up;
+    canvas2.addEventListener("mousedown",down=function(evt){
+        canvas2.addEventListener("mousemove",move=function(evt){
+            var x = evt.clientX - canvas2.offsetLeft;
+            var y = evt.clientY - canvas2.offsetTop;
+            context2.beginPath();
+            context2.arc(x, y, 10, 0, Math.PI * 2, true);
+            context2.fill();
+            context2.closePath();
+
+
+
+
+            if(result>0.5){
+                context2.clearRect(0,0,uWidth,uHeight);
+                canvas2.removeEventListener("mousemove", move);
+            }
+        },false);
+        canvas2.addEventListener("mouseup",function () {
+            canvas2.removeEventListener("mousemove",move);
+            canvas2.removeEventListener("mouseup",up);
+        },false);
+    },false);
+
+    var result=function(){
+        var uWidth=context2.width;
+        var uHeight=context2.height;
+        var imgData=context2.getImageData(0,0,uWidth,uHeight);
+        var pixelsArr=imgData.data;
+        var transPixelsArr=0;
+        for (var i = 0, j = pixelsArr.length; i < j; i += 4) {
+        var a = pixelsArr[i + 3];
+        if (a ==0) {
+            transPixelsArr++;
+        }
+    }
+    return transPixelsArr/(pixelsArr.length/4);
+    };
+    
+</script>
+</html>
