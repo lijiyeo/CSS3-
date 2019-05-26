@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div1{
+            margin:0 auto;
+            width: 355px;
+            height:620px;
+            border:1px solid rgb(187, 187, 187);
+        }
+        .div2{
+            width:355px;
+            height: 590px;
+            overflow:hidden;
+        }
+        .div2 div{
+            float: left;
+            
+        }
+        .div21{
+            height: 399px;
+            overflow: hidden;
+            transition: width,height 0.3s linear;
+        }
+        .div1:hover img{
+            overflow: hidden;
+            transform: scale(1.25,1.25);
+            
+        }
+        
+        .div1 img{
+            transform: scale(1,1);
+            transition: transform 0.3s linear;
+        }
+        .div22{
+            height: 191px;
+            width: 355px;
+        }
+        .div1:hover .div21{
+             width:355px;
+             height:329px;
+        }
+        .duanluo{
+            width:355px;
+            opacity:0;
+            transition: opacity 0.3s linear;
+        }
+        .div1:hover .duanluo{
+            opacity:1;
+        }
+        .shadow{
+            width:355px;
+            height:399px;
+            top:-210pxpx;
+            position: absolute;
+            background-color:black;
+            opacity: 0;
+            transition: 0.3s linear;
+        }
+        .div1:hover .shadow{
+            opacity:0.3;
+            height: 329px;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div class="div2">
+            <div class="div21">
+                <img src="SQs1.jpg" alt="">
+                <div style="height:50px;width:50px;background-color:orange;
+                border-radius:50px;position:relative;top:-380px;left:290px;
+                text-align: center;color:white;">
+                <p style="margin-top:1px;margin-bottom:-15px;">15</p>
+                <p>5月</p>
+                </div>
+            </div>
+            <div class="shadow"></div>
+            <div class="div22">
+                <div style="height:20px;height:20px;background-color:orange;position: relative;color:white;top:-20px;">照片</div>
+                    <p style="margin-left:20px;font-size: 25px;">《SQ》--坛九 新浪微博</p>
+                    <p style="margin-left:20px;color: orange;font-size:20px;">百合漫画</p>
+                    <div class="duanluo">
+                        <p style="margin-left:20px;color: rgb(184, 169, 139)">二附中的孙璟发现常会在公交车站遇到南高的秋瞳，
+                        终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于
+                        是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。
+                        在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…
+                        </p>
+                    </div>
+            </div>
+        </div>
+        <div style="height:30px;width:355px;line-height:30px;color: rgb(146, 144, 136);">10分鐘前  999+評論</div>
+    </div>
+</body>
+</html>
