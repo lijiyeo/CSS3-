@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div1{
+            margin: 0 auto;
+            /* background:url(SQs.jpg) no-repeat; */
+            width:360px;
+            height: 709px;
+            overflow:hidden;
+            border:1px solid rgb(201, 196, 186);
+            background-color: bisque
+        }
+        .div2{
+            background-color:white;
+            /* position: absolute; */
+            margin: 0 auto;
+            width: 360px;
+            height:300px;
+        }
+        .div1:hover img{
+            overflow: hidden;
+            transform: scale(1.25,1.25);
+            
+        }
+        .div1 img{
+            transform: scale(1,1);
+            transition: transform 0.5s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <div>
+            <div style="overflow: hidden"><img src="SQs.jpg" alt="">
+            </div>
+        
+        <div class="div2">
+            <p style="margin-left:20px;font-size: 23px;">《SQ》--坛九 新浪微博</p>
+            <p style="margin-left:20px;color: orange;font-size:19px;">漫画</p>
+            <div>
+                <p style="margin-left:20px;color: rgb(184, 169, 139)">二附中的孙璟发现常会在公交车站遇到南高的秋瞳，
+                终于有一天，孙璟鼓起勇气询问了秋瞳的名字，于
+                是爽朗坦率的孙璟与温柔纯真的秋瞳成为了朋友。
+                在欢笑和泪水中，一幅多彩的青春生活画卷徐徐展开…
+                </p>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+</body>
+<script>
+    var div1=document.getElementsByClassName("div1");
+    div1.onclick=function(){
+
+    }
+</script>
+</html>
